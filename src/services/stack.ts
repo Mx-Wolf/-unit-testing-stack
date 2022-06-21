@@ -21,6 +21,13 @@ export const createStack = <T>(limit: number) => {
         value: item,
       };
     },
-    pop: () => { throw new Error(UNDERFLOW_ERROR) }
+    pop: () => {
+      if (typeof top === "undefined") {
+        throw new Error(UNDERFLOW_ERROR);
+      }
+      const { prev, value } = top;
+      top = prev;
+      return value;
+    }
   });
 };

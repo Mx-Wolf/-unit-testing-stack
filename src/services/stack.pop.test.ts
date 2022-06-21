@@ -7,4 +7,15 @@ describe('операция pop для абстрактного стека', () =
 
     expect(() => pop()).toThrow(/underflow/i)
   })
+  it('Извлекает помещенный элемент', () => {
+    // arrange
+    const limit = 1;
+    const item = {};
+    const { pop, push } = createStack(limit);
+    // act
+    push(item);
+    const result = pop();
+    // assert
+    expect(result).toBe(item);
+  })
 })
